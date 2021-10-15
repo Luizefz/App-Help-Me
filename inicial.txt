@@ -1,0 +1,124 @@
+import React from 'react';
+import {
+  ButtonOutline,
+  ButtonSolid,
+  ScreenContainer,
+  withTheme,
+} from '@draftbit/ui';
+import { Image, StatusBar, StyleSheet, Text } from 'react-native';
+
+const InicialScreen = props => {
+  const { theme } = props;
+  const { navigation } = props;
+
+  React.useEffect(() => {
+    StatusBar.setBarStyle('dark-content');
+  }, []);
+
+  return (
+    <ScreenContainer
+      style={[
+        styles.screen,
+        {
+          backgroundColor: theme.colors.background,
+          borderColor: theme.colors.background,
+        },
+      ]}
+      hasSafeArea={true}
+    >
+      <Text style={[styles.Textso, { color: theme.colors.strong }]}>
+        {'Help Me'}
+      </Text>
+      <Image
+        style={styles.ImageVt}
+        source={{
+          uri:
+            'https://storyset.com/illustration/day-of-people-with-disability/bro',
+        }}
+        resizeMode="cover"
+      />
+      <Text style={[styles.Textzr, { color: theme.colors.strong }]}>
+        {'Instruções e informações de modo fácil e acessível à todos.'}
+      </Text>
+
+      <ButtonSolid
+        onPress={() => {
+          try {
+            navigation.navigate('LoginScreen');
+          } catch (err) {
+            console.error(err);
+          }
+        }}
+        style={[
+          styles.ButtonSolid_6v,
+          { backgroundColor: theme.colors.secondary },
+        ]}
+        title="Login"
+      >
+        {`Sign Up`}
+      </ButtonSolid>
+
+      <ButtonOutline
+        onPress={() => {
+          try {
+            navigation.navigate('CadastroScreen');
+          } catch (err) {
+            console.error(err);
+          }
+        }}
+        style={[
+          styles.ButtonOutlineQD,
+          {
+            borderColor: theme.colors.secondary,
+            color: theme.colors.secondary,
+          },
+        ]}
+        title="Registre-se"
+      >
+        {`Log In`}
+      </ButtonOutline>
+    </ScreenContainer>
+  );
+};
+
+const styles = StyleSheet.create({
+  Textso: {
+    marginTop: 30,
+    fontFamily: 'MerriweatherBold',
+    fontSize: 22,
+  },
+  ImageVt: {
+    width: '100%',
+    height: 300,
+    marginTop: 20,
+  },
+  Textzr: {
+    fontSize: 18,
+    fontFamily: 'MerriweatherBold',
+    marginTop: 30,
+  },
+  ButtonSolid_6v: {
+    borderRadius: 8,
+    fontFamily: 'MerriweatherBold',
+    textAlign: 'center',
+    marginTop: 30,
+    fontSize: 22,
+  },
+  ButtonOutlineQD: {
+    backgroundColor: 'transparent',
+    borderRadius: 8,
+    fontFamily: 'MerriweatherBold',
+    borderWidth: 1,
+    textAlign: 'center',
+    marginTop: 20,
+    fontSize: 22,
+  },
+  screen: {
+    alignSelf: 'stretch',
+    alignContent: 'stretch',
+    marginLeft: 20,
+    marginRight: 20,
+  },
+});
+
+export default withTheme(InicialScreen);
